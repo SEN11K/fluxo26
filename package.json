@@ -1,0 +1,25 @@
+{
+  "name": "analisador-reverso-eleitoral-brasil-2026",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Auditoria contábil e modelagem reversa/preditiva de transições eleitorais com dados oficiais do TSE.",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/*.test.js",
+    "analyze": "node src/cli.js analyze",
+    "download:tse": "node src/cli.js download-tse",
+    "fetch:municipal": "node src/cli.js fetch-municipal",
+    "profile": "node src/cli.js profile"
+    ,"export": "node src/export-results.js",
+    "regions": "node src/aggregate-regions.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "chart.js": "^4.5.0",
+    "csv-parse": "^7.0.3",
+    "csv-stringify": "^6.6.0",
+    "express": "^5.1.0"
+  }
+}

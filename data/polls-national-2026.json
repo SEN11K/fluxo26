@@ -1,0 +1,14 @@
+{
+  "asOf": "2026-10-24T23:59:59-03:00",
+  "selectionRule": "Última pesquisa nacional pós-1º turno de cada instituto com resultados e registro identificados, publicada até o fim de 24/10/2026. Percentuais totais são normalizados apenas entre os dois finalistas.",
+  "historicalMarginErrorSdPp": 2.6,
+  "historicalErrorSource": "https://elpais.com/america/2026-10-24/puede-lula-remontar-a-flavio-bolsonaro-esto-es-lo-que-dicen-las-encuestas.html",
+  "polls": [
+    {"institute":"Palver","registration":"BR-01794/2026","fieldStart":"2026-10-22","fieldEnd":"2026-10-24","published":"2026-10-24","sampleSize":5000,"method":"recrutamento digital e calibração","marginOfErrorPp":2.2,"lulaTotal":48.6,"flavioTotal":50.4,"sourceUrl":"https://www.palver.com/"},
+    {"institute":"Nexus","registration":"BR-08234/2026","fieldStart":"2026-10-23","fieldEnd":"2026-10-24","published":"2026-10-24","sampleSize":2000,"method":"telefone, 27 UFs","marginOfErrorPp":2.2,"lulaTotal":46.0,"flavioTotal":47.0,"sourceUrl":"https://www.nexus.fsb.com.br/"},
+    {"institute":"IPESPE/Abrapel","registration":"BR-04350/2026","fieldStart":"2026-10-20","fieldEnd":"2026-10-22","published":"2026-10-23","sampleSize":1500,"method":"telefone CATI","marginOfErrorPp":2.6,"lulaTotal":47.0,"flavioTotal":48.0,"sourceUrl":"https://ipespe.org.br/"},
+    {"institute":"GERP","registration":"BR-03835/2026","fieldStart":"2026-10-19","fieldEnd":"2026-10-21","published":"2026-10-21","sampleSize":2400,"method":"telefone","marginOfErrorPp":2.0,"lulaTotal":45.0,"flavioTotal":50.0,"sourceUrl":"https://gerp.com.br/"},
+    {"institute":"Futura/100% Cidades","registration":"registro associado à rodada publicada em 21/10","fieldStart":"2026-10-19","fieldEnd":"2026-10-20","published":"2026-10-21","sampleSize":2000,"method":"telefone CATI","marginOfErrorPp":2.2,"lulaTotal":46.8,"flavioTotal":48.9,"sourceUrl":"https://static.poder360.com.br/"},
+    {"institute":"Vox Brasil","registration":"BR-04332/2026","fieldStart":"2026-10-15","fieldEnd":"2026-10-17","published":"2026-10-18","sampleSize":2100,"method":"presencial domiciliar","marginOfErrorPp":2.15,"lulaTotal":46.4,"flavioTotal":44.6,"sourceUrl":"https://admin.cnnbrasil.com.br/"}
+  ]
+}

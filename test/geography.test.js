@@ -1,0 +1,4 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { aggregateSubstateRegions } from '../src/lib/geography.js';
+test('agrega regiões subestaduais sem perder a identidade local',()=>{const rows=[{unitKey:'MG:1',uf:'MG',municipalityCode:'1',attendanceChange:5,abstentionChange:-5,blankChange:-1,nullChange:-1,validChange:7,eliminatedVotesFirst:3,finalistIncrease:10,identityRight:10,identityResidual:0,lulaChange:7,flavioChange:3}];const tse=new Map([['MG:1',{ibgeCode:'100'}]]),ibge=new Map([['100',{immediateId:1,immediate:'A',intermediateId:2,intermediate:'B',mesoregionId:3110,mesoregion:'Sul/Sudoeste de Minas'}]]);const result=aggregateSubstateRegions(rows,tse,ibge,[{id:'sul',name:'Sul de MG',basis:'teste',mesoregionIds:[3110]}]);assert.equal(result.custom[0].finalistIncrease,10);assert.equal(result.custom[0].identityHolds,true);});

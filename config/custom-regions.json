@@ -1,0 +1,5 @@
+[
+  {"id":"sul-sudoeste-mg","name":"Sul/Sudoeste de Minas","basis":"Mesorregião IBGE 1989","mesoregionIds":[3110]},
+  {"id":"zona-da-mata-mg","name":"Zona da Mata de Minas","basis":"Mesorregião IBGE 1989","mesoregionIds":[3112]},
+  {"id":"norte-noroeste-sp","name":"Norte/Noroeste de São Paulo","basis":"união declarada de duas mesorregiões IBGE","mesoregionIds":[3501,3502]}
+]

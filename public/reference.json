@@ -1,0 +1,65 @@
+{
+  "status": "official-national-reference",
+  "scope": "Brasil e exterior",
+  "sources": [
+    {
+      "label": "TSE EA20 — 1º turno, Presidente, Brasil",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6257/dados/br/br-c0001-e006257-u.json",
+      "election": 6257,
+      "generatedAtSource": "05/10/2026 12:51:47"
+    },
+    {
+      "label": "TSE EA20 — 2º turno, Presidente, Brasil",
+      "url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
+      "election": 6258,
+      "generatedAtSource": "25/10/2026 23:27:02"
+    }
+  ],
+  "first": {
+    "eligible": 158745502,
+    "attendance": 125275835,
+    "abstention": 33469244,
+    "validVotes": 119300788,
+    "blankVotes": 2300798,
+    "nullVotes": 3674249,
+    "candidates": {
+      "lula": 53879538,
+      "flavio": 56104503,
+      "RONALDO CAIADO": 2605148,
+      "CLARIANA BARAO": 40043,
+      "EDMILSON COSTA": 22693,
+      "HERTZ DIAS": 43103,
+      "ESCRITOR AUGUSTO CURY": 3448569,
+      "ZEMA": 326488,
+      "SAMARA": 122911,
+      "VETERINÁRIO WILSON GRASSI": 16881,
+      "RENAN SANTOS": 2675887,
+      "RUI COSTA PIMENTA": 15024
+    }
+  },
+  "second": {
+    "eligible": 158745502,
+    "attendance": 128236074,
+    "abstention": 30509005,
+    "validVotes": 124082273,
+    "blankVotes": 1430496,
+    "nullVotes": 2723305,
+    "candidates": { "lula": 64256232, "flavio": 59826041 }
+  },
+  "referenceIdentity": {
+    "left": 14098232,
+    "eliminated": 9316747,
+    "attendanceIncrease": 2960239,
+    "blankReduction": 870302,
+    "nullReduction": 950944,
+    "right": 14098232,
+    "residual": 0
+  },
+  "catalogWarning": "O catálogo aberto registra 158.745.502 aptos nos arquivos, mas informa que 39 registros de transferência temporária devem ser desconsiderados para o total efetivo de 158.745.463. A diferença não altera a identidade de comparecimento/abstenção usada nos arquivos; deve ser reportada separadamente.",
+  "fraud": {
+    "probability": null,
+    "status": "not-identifiable",
+    "label": "Não identificável a partir da identidade contábil",
+    "explanation": "A igualdade é obrigatória quando as categorias são exaustivas: aumento dos finalistas = votos antes dados aos eliminados + novos comparecimentos líquidos + redução de brancos + redução de nulos. Exatidão não é coincidência aleatória e não fornece P(fraude|dados)."
+  }
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fluxo 26 — Analisador Reverso Eleitoral</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">F26</span><div><strong>Fluxo 26</strong><small>Analisador reverso eleitoral</small></div></div>
+    <nav><button data-view="overview" class="active">Visão geral</button><button data-view="model">Modelo reverso</button><button data-view="regions">Regiões</button><button data-view="municipal">Municípios</button><button data-view="quality">Qualidade</button></nav>
+    <div class="status"><span></span><span id="data-status">Referência nacional oficial</span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">BRASIL • ELEIÇÃO PRESIDENCIAL 2026</p><h1>O resultado fecha.<br><em>As trajetórias não são únicas.</em></h1><p class="lede">Explore matrizes de transição compatíveis com os mesmos totais oficiais, sem confundir contabilidade agregada com o caminho individual do eleitor.</p></div>
+      <div class="hero-note"><span>Princípio de leitura</span><strong>Compatível ≠ comprovado</strong><p>O painel separa observações, hipóteses, estimativas e aquilo que os dados agregados não identificam.</p></div>
+    </section>
+
+    <section id="overview" class="view active">
+      <div class="metric-grid" id="metrics"></div>
+      <div class="grid two">
+        <article class="panel identity-panel" data-tip="Mostra como as categorias oficiais dos dois turnos se encaixam na mesma conta." tabindex="0"><div class="panel-head"><div><span class="kicker">IDENTIDADE CONTÁBIL</span><h2>De onde vêm os 14,1 milhões?</h2></div><span class="pill success" data-tip="Zero significa que a conta fecha sem diferença.">resíduo zero</span></div><div id="identity-bars"></div><p class="note">Esta decomposição é uma consequência algébrica das categorias observadas. Ela não atribui votos a pessoas.</p></article>
+        <article class="panel"><div class="panel-head"><div><span class="kicker">ENTRE TURNOS</span><h2>Movimento das categorias</h2></div></div><canvas id="movementChart"></canvas></article>
+      </div>
+      <article class="panel evidence"><div class="evidence-icon">?</div><div><span class="kicker">INFERÊNCIA SOBRE FRAUDE</span><h2>Probabilidade não identificável</h2><p>Sem taxa-base, casos rotulados e um modelo causal validado fora desta eleição, não há cálculo científico de probabilidade de fraude a partir dessa igualdade. O painel reporta inconsistências e raridade sob hipóteses explícitas — nunca converte um p-valor em “chance de fraude”.</p></div></article>
+      <article class="panel"><div class="panel-head"><div><span class="kicker">MODELO PREDITIVO AUTOMÁTICO</span><h2 data-tip="Compara o resultado com o que as pesquisas permitiam esperar antes da votação." tabindex="0">Pesquisas, incerteza e comparação causal</h2></div><span class="pill success" id="auto-status" data-tip="Quantidade de pesquisas nacionais usadas no cálculo.">calculando…</span></div><div id="auto-evidence" class="auto-evidence"></div><div class="table-wrap"><table id="polls-table"></table></div><p class="note">O modelo alternativo captura qualquer deslocamento agregado não explicado — inclusive erro de pesquisa, mobilização tardia ou mudança real de preferência. Ele não é específico de fraude.</p></article>
+      <details class="panel"><summary><span class="kicker">ANÁLISE AVANÇADA</span> Alterar premissas manualmente</summary><div class="bayes-grid"><label>Margem observada (Lula − Flávio, p.p.)<input id="b-observed" type="number" step="0.01" value="3.57"></label><label>Média preditiva pré-eleitoral (p.p.)<input id="b-mean" type="number" step="0.1"></label><label>Incerteza preditiva total (desvio, p.p.)<input id="b-sd" type="number" step="0.1" min="0.1"></label><label>Taxa-base de fraude (%)<input id="b-prior" type="number" step="0.1" min="0.01" max="99.99"></label><label>Efeito médio sob fraude (p.p.)<input id="b-shift" type="number" step="0.1"></label><label>Variabilidade do efeito (p.p.)<input id="b-shift-sd" type="number" step="0.1" min="0.1"></label></div><button id="bayes-run" class="button primary bayes-button">Recalcular cenário</button><div id="bayes-result" class="bayes-result"><strong>—</strong><span>Preencha todas as premissas.</span></div></details>
+    </section>
+
+    <section id="model" class="view">
+      <div class="section-head"><div><span class="kicker">LABORATÓRIO DE HIPÓTESES</span><h2>Uma família de soluções, não uma resposta única</h2></div><button id="export-model" class="button">Exportar JSON</button></div>
+      <article class="panel family-summary"><div class="panel-head"><div><span class="kicker">BUSCA AUTOMÁTICA</span><h2 id="family-title">Procurando soluções compatíveis…</h2></div><span class="pill success" id="family-status">calculando</span></div><div id="family-facts" class="auto-evidence"></div><p class="note">O programa parte de hipóteses distintas e de sementes aleatórias, balanceia cada matriz até reproduzir os totais oficiais e preserva as soluções diferentes. A amplitude abaixo mostra o que os agregados não conseguem identificar.</p></article>
+      <div class="grid model-grid">
+        <aside class="panel controls"><label data-tip="Cada opção é uma explicação possível que produz os mesmos totais oficiais." tabindex="0">Solução encontrada automaticamente<select id="scenario-select"></select></label><div id="solution-copy" class="solution-copy"></div><details class="technical-controls"><summary data-tip="Abra somente se quiser alterar manualmente uma hipótese." tabindex="0">Ajuste técnico opcional</summary><div id="sliders"></div><button id="apply-scenario" class="button primary">Criar variação compatível</button><p class="note">Não é necessário preencher nada. Este controle existe apenas para auditoria e exploração: o balanceamento ajusta as demais células até reproduzir os totais marginais.</p></details></aside>
+        <article class="panel matrix-panel"><div class="panel-head"><div><span class="kicker">MATRIZ ESTIMADA</span><h2 data-tip="Cada linha mostra de onde o grupo veio; cada coluna mostra para onde ele pode ter ido." tabindex="0">Origem no 1º turno → destino no 2º</h2></div><span id="matrix-error" class="pill" data-tip="Diferença máxima entre o cálculo e o total oficial. Perto de zero significa ajuste exato."></span></div><div class="table-wrap"><table id="matrix"></table></div></article>
+      </div>
+      <article class="panel"><div class="panel-head"><div><span class="kicker">NÃO IDENTIFICAÇÃO</span><h2>Amplitude entre soluções compatíveis</h2></div></div><div id="ranges" class="range-grid"></div></article>
+    </section>
+
+    <section id="municipal" class="view">
+      <div class="section-head"><div><span class="kicker">TODOS OS MUNICÍPIOS</span><h2>Comparação territorial</h2><p id="coverage-copy">Aguardando importação dos CSVs municipais oficiais.</p></div><button id="export-municipal" class="button" disabled>Exportar CSV</button></div>
+      <article class="panel"><div class="toolbar"><input id="municipal-search" placeholder="Buscar município ou UF"><select id="municipal-sort"><option value="attendanceChange">Maior variação de comparecimento</option><option value="validChange">Maior variação de válidos</option><option value="identityResidual">Maior resíduo da identidade</option></select></div><div class="table-wrap tall"><table id="municipal-table"><thead><tr><th>Município</th><th>UF</th><th>Δ comparecimento</th><th>Δ abstenção</th><th>Δ brancos</th><th>Δ nulos</th><th>Δ válidos</th><th>Identidade local</th></tr></thead><tbody><tr><td colspan="8" class="empty">Execute a importação nacional para preencher todos os municípios e o exterior comparáveis.</td></tr></tbody></table></div></article>
+    </section>
+
+    <section id="regions" class="view">
+      <div class="section-head"><div><span class="kicker">BRASIL INTEIRO • RECORTES SUBESTADUAIS</span><h2>O aumento dos votos dentro dos estados</h2><p id="region-coverage">Regiões oficiais do IBGE de todos os estados e agrupamentos personalizados com composição declarada.</p></div><button id="export-regions" class="button">Exportar CSV</button></div>
+      <div id="region-highlights" class="metric-grid"></div>
+      <article class="panel"><div class="toolbar"><select id="region-level"><option value="legacyMesoregions">Brasil inteiro — mesorregiões</option><option value="intermediate">Brasil inteiro — regiões intermediárias</option><option value="immediate">Brasil inteiro — regiões imediatas</option><option value="custom">Recortes destacados pelo usuário</option></select><input id="region-search" placeholder="Buscar qualquer região ou UF do Brasil"></div><div class="table-wrap tall"><table id="region-table"><thead><tr><th>Região</th><th>UF</th><th>Municípios</th><th>Δ Lula</th><th>Δ Flávio</th><th>Δ finalistas</th><th>Eliminados 1T</th><th>Δ comparecimento</th><th>Identidade</th></tr></thead><tbody></tbody></table></div><p class="note">A tabela nacional não se limita aos exemplos. “Norte/Noroeste de São Paulo” é uma união declarada das mesorregiões IBGE São José do Rio Preto e Ribeirão Preto; os níveis nacionais seguem as classificações do IBGE.</p></article>
+    </section>
+
+    <section id="quality" class="view">
+      <div class="section-head"><div><span class="kicker">ANTES DA ANÁLISE</span><h2>Relatório de qualidade e proveniência</h2></div></div>
+      <div class="grid two"><article class="panel" id="quality-cards"></article><article class="panel"><span class="kicker">FONTES CONFIRMADAS</span><h2>Arquivos nacionais EA20</h2><div id="sources"></div></article></div>
+      <article class="panel warning"><strong>Aviso de cobertura do catálogo</strong><p id="catalog-warning"></p></article>
+    </section>
+  </main>
+  <footer><span>Fluxo 26 • execução local • sem chaves de API</span><span>Inferência ecológica exige cautela</span></footer>
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
