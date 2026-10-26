@@ -42,6 +42,8 @@ function renderOverview() {
   ];
   document.getElementById('identity-bars').innerHTML = parts.map(([label, value, color]) => `<div class="identity-row"><span>${label}</span><div class="bar"><i style="width:${value / id.left * 100}%;background:${color}"></i></div><strong>${fmt.format(value)}</strong></div>`).join('');
   const lulaIncrease=s.candidates.lula-f.candidates.lula,flavioIncrease=s.candidates.flavio-f.candidates.flavio;
+  const afterFlavio=id.eliminated+id.attendanceIncrease+id.blankReduction+id.nullReduction-flavioIncrease;
+  document.getElementById('identity-minus-flavio').innerHTML=`<div class="identity-formula" data-tip="Somamos as quatro parcelas da identidade e retiramos apenas o aumento de Flávio entre os turnos." tabindex="0"><span>${fmt.format(id.eliminated)}</span><i>+</i><span>${fmt.format(id.attendanceIncrease)}</span><i>+</i><span>${fmt.format(id.blankReduction)}</span><i>+</i><span>${fmt.format(id.nullReduction)}</span><i>−</i><span class="flavio-term">${fmt.format(flavioIncrease)}</span><i>=</i><strong>${fmt.format(afterFlavio)}</strong></div><div class="formula-legend"><span>eliminados</span><span>comparecimento</span><span>brancos</span><span>nulos</span><span>aumento de Flávio</span><b>aumento de Lula</b></div>`;
   const commonPool=id.attendanceIncrease+id.blankReduction+id.nullReduction;
   const eliminatedOutsideFlavio=id.eliminated-flavioIncrease;
   const inverseParts=[
