@@ -9,6 +9,8 @@ export function accounting(first, second, finalists) {
   const validIncrease = second.validVotes - first.validVotes;
   const finalistIncrease = increaseA + increaseB;
   const rhs = eliminatedVotes + attendanceIncrease + blankReduction + nullReduction;
+  const commonPool = attendanceIncrease + blankReduction + nullReduction;
+  const eliminatedRemainderAfterB = eliminatedVotes - increaseB;
   return {
     finalists: { [a]: { first: first.candidates[a], second: second.candidates[a], increase: increaseA }, [b]: { first: first.candidates[b], second: second.candidates[b], increase: increaseB } },
     finalistIncrease,
@@ -19,6 +21,19 @@ export function accounting(first, second, finalists) {
     nullReduction,
     validIncrease,
     identity: { left: finalistIncrease, right: rhs, residual: finalistIncrease - rhs, holds: finalistIncrease === rhs },
+    inverseForA: {
+      candidate: a,
+      increase: increaseA,
+      commonPool,
+      attendanceIncrease,
+      blankReduction,
+      nullReduction,
+      eliminatedVotes,
+      otherFinalistIncrease: increaseB,
+      eliminatedRemainderAfterOtherFinalist: eliminatedRemainderAfterB,
+      reconstructed: commonPool + eliminatedRemainderAfterB,
+      residual: increaseA - commonPool - eliminatedRemainderAfterB
+    },
     explanation: 'Identidade agregada: decorre da conservação das categorias contábeis. Não identifica trajetórias individuais nem constitui evidência autônoma de fraude.'
   };
 }

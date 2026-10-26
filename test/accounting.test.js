@@ -12,6 +12,13 @@ test('reproduz a identidade contábil de referência sem impô-la', () => {
   assert.equal(result.blankReduction, 870302);
   assert.equal(result.nullReduction, 950944);
   assert.deepEqual(result.identity, { left:14098232, right:14098232, residual:0, holds:true });
+  assert.deepEqual(result.inverseForA, {
+    candidate:'lula', increase:10376694, commonPool:4781485,
+    attendanceIncrease:2960239, blankReduction:870302, nullReduction:950944,
+    eliminatedVotes:9316747, otherFinalistIncrease:3721538,
+    eliminatedRemainderAfterOtherFinalist:5595209,
+    reconstructed:10376694, residual:0
+  });
 });
 
 test('recalcula a identidade independentemente em cada município',()=>{
