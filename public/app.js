@@ -25,6 +25,17 @@ function renderOverview() {
     ['Resíduo da identidade', id.residual, 'fechamento contábil exato']
   ];
   document.getElementById('metrics').innerHTML = cards.map(([label, value, sub]) => `<div class="metric"><span>${label}</span><strong>${fmt.format(value)}</strong><small>${sub}</small></div>`).join('');
+  const candidateDefs=[
+    {key:'lula',name:'Lula',image:'assets/lula.jpg',color:'#0a6b58'},
+    {key:'flavio',name:'Flávio Bolsonaro',image:'assets/flavio.jpg',color:'#4975d1'}
+  ];
+  document.getElementById('candidate-comparison').innerHTML=candidateDefs.map(c=>{
+    const firstVotes=f.candidates[c.key],secondVotes=s.candidates[c.key],increase=secondVotes-firstVotes;
+    const growth=increase/firstVotes,shareIncrease=increase/id.left,firstValid=firstVotes/f.validVotes,secondValid=secondVotes/s.validVotes;
+    return `<article class="candidate-card" style="--candidate:${c.color}" data-tip="Mostra a votação exata e a mudança percentual de ${c.name} entre os turnos." tabindex="0"><div class="candidate-head"><img src="${c.image}" alt="Retrato de ${c.name}"><div><small>${c.name}</small><strong>+${fmt.format(increase)}</strong><span>aumento entre turnos</span></div></div><div class="vote-flow"><div><small>1º turno</small><strong>${fmt.format(firstVotes)}</strong><span>${pct(firstValid)} dos válidos</span></div><i>→</i><div><small>2º turno</small><strong>${fmt.format(secondVotes)}</strong><span>${pct(secondValid)} dos válidos</span></div></div><div class="candidate-stats"><span data-tip="Aumento dividido pela votação do próprio candidato no primeiro turno."><b>${pct(growth)}</b> crescimento sobre o próprio 1º turno</span><span data-tip="Parte do aumento combinado de 14.098.232 votos que pertence a este candidato."><b>${pct(shareIncrease)}</b> dos votos adicionais dos finalistas</span><span data-tip="Mudança na porcentagem do candidato sobre todos os votos válidos."><b>${((secondValid-firstValid)*100).toFixed(1).replace('.',',')} p.p.</b> na participação dos válidos</span></div></article>`;
+  }).join('');
+  const firstGap=f.candidates.lula-f.candidates.flavio,secondGap=s.candidates.lula-s.candidates.flavio,gapSwing=secondGap-firstGap;
+  document.getElementById('candidate-gap').innerHTML=`<div data-tip="No primeiro turno, Flávio tinha esta quantidade de votos a mais que Lula." tabindex="0"><small>Diferença no 1º turno</small><strong>Flávio +${fmt.format(Math.abs(firstGap))}</strong></div><i>→</i><div data-tip="No segundo turno, Lula terminou com esta quantidade de votos a mais que Flávio." tabindex="0"><small>Diferença no 2º turno</small><strong>Lula +${fmt.format(secondGap)}</strong></div><div class="swing" data-tip="Quanto a diferença Lula menos Flávio mudou de um turno para o outro." tabindex="0"><small>Virada da diferença</small><strong>${fmt.format(gapSwing)} votos</strong></div>`;
   const parts = [
     ['Eliminados no 1º turno', id.eliminated, '#0a6b58'], ['Comparecimento líquido', id.attendanceIncrease, '#4975d1'],
     ['Redução de brancos', id.blankReduction, '#ee7d4d'], ['Redução de nulos', id.nullReduction, '#bb4c53']
