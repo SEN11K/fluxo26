@@ -44,10 +44,16 @@ test('cenário total soma candidato por candidato usando a própria taxa',()=>{
   assert.equal(Math.round(flavioTransfer),3987665);
 });
 
-test('teste alternativo usa somente os votos adicionais dos finalistas no segundo turno',()=>{
-  const rates=data.polls.find(p=>p.registration==='BR-08535/2026').groups['ESCRITOR AUGUSTO CURY'];
-  const base=reference.referenceIdentity.left;
-  assert.equal(base,14098232);
-  assert.equal(Math.round(base*rates.lula/100),6767151);
-  assert.equal(Math.round(base*rates.flavio/100),4652417);
+test('teste completo separa eliminados, novos comparecimentos e redução de brancos e nulos',()=>{
+  const attendance=reference.referenceIdentity.attendanceIncrease;
+  const blankNull=reference.referenceIdentity.blankReduction+reference.referenceIdentity.nullReduction;
+  const normalPoll={lula:48.6/(48.6+50.4),flavio:50.4/(48.6+50.4)};
+  assert.equal(attendance,2960239);
+  assert.equal(blankNull,1821246);
+  assert.equal(Math.round(attendance*normalPoll.lula),1453208);
+  assert.equal(Math.round(attendance*normalPoll.flavio),1507031);
+  assert.equal(Math.round(blankNull*.40),728498);
+  assert.equal(Math.round(blankNull*.36),655649);
+  assert.equal(2871366+1453208+728498,5053072);
+  assert.equal(3987665+1507031+655649,6150345);
 });
