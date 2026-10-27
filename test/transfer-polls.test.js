@@ -43,3 +43,11 @@ test('cenário total soma candidato por candidato usando a própria taxa',()=>{
   assert.equal(Math.round(lulaTransfer),2871366);
   assert.equal(Math.round(flavioTransfer),3987665);
 });
+
+test('teste alternativo usa somente os votos adicionais dos finalistas no segundo turno',()=>{
+  const rates=data.polls.find(p=>p.registration==='BR-08535/2026').groups['ESCRITOR AUGUSTO CURY'];
+  const base=reference.referenceIdentity.left;
+  assert.equal(base,14098232);
+  assert.equal(Math.round(base*rates.lula/100),6767151);
+  assert.equal(Math.round(base*rates.flavio/100),4652417);
+});
