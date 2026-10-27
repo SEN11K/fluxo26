@@ -1,0 +1,78 @@
+{
+  "updatedAt": "2026-10-26",
+  "polls": [
+    {
+      "id": "quaest-08535",
+      "institute": "Quaest",
+      "registration": "BR-08535/2026",
+      "field": "17 a 20/10",
+      "sampleSize": 2154,
+      "sourceUrl": "https://quaest.com.br/segundo-turno-2026-votos-brancos-nulos/",
+      "groups": {
+        "ESCRITOR AUGUSTO CURY": {"lula":48,"flavio":33,"other":16,"undecided":3},
+        "RONALDO CAIADO": {"lula":21,"flavio":57,"other":22,"undecided":0},
+        "RENAN SANTOS": {"lula":25,"flavio":51,"other":24,"undecided":0},
+        "blankNullAbstention": {"lula":40,"flavio":36,"other":24,"undecided":null}
+      },
+      "note": "Quaest agrupou, no último recorte, quem não compareceu e quem votou branco ou nulo no 1º turno."
+    },
+    {
+      "id": "quaest-08729",
+      "institute": "Quaest",
+      "registration": "BR-08729/2026",
+      "field": "10 a 13/10",
+      "sampleSize": 2154,
+      "sourceUrl": "https://noticias.uol.com.br/eleicoes/2026/10/17/pesquisas-destino-votos-cury-renan-caiado.ghtm",
+      "groups": {
+        "ESCRITOR AUGUSTO CURY": {"lula":34,"flavio":30,"other":30,"undecided":6},
+        "RONALDO CAIADO": {"lula":23,"flavio":42,"other":null,"undecided":null},
+        "RENAN SANTOS": {"lula":14,"flavio":40,"other":43,"undecided":3}
+      },
+      "note": "Primeira medição pós-1º turno; algumas parcelas de Caiado não foram detalhadas na publicação consultada."
+    },
+    {
+      "id": "palver-08028",
+      "institute": "Palver",
+      "registration": "BR-08028/2026",
+      "field": "10 a 13/10",
+      "sampleSize": 5000,
+      "sourceUrl": "https://noticias.uol.com.br/eleicoes/2026/10/17/pesquisas-destino-votos-cury-renan-caiado.ghtm",
+      "groups": {
+        "ESCRITOR AUGUSTO CURY": {"lula":64,"flavio":32,"other":2,"undecided":2},
+        "RONALDO CAIADO": {"lula":35,"flavio":61,"other":2,"undecided":1},
+        "RENAN SANTOS": {"lula":41,"flavio":41,"other":18,"undecided":0}
+      },
+      "note": "Branco, nulo e não comparecimento aparecem agrupados na divulgação. Totais podem diferir de 100% por arredondamento."
+    },
+    {
+      "id": "poderdata-04258",
+      "institute": "PoderData",
+      "registration": "BR-04258/2026",
+      "field": "13 a 15/10",
+      "sampleSize": 3000,
+      "sourceUrl": "https://noticias.uol.com.br/eleicoes/2026/10/17/pesquisas-destino-votos-cury-renan-caiado.ghtm",
+      "groups": {
+        "ESCRITOR AUGUSTO CURY": {"lula":36,"flavio":47,"other":13,"undecided":5},
+        "RONALDO CAIADO": {"lula":30,"flavio":50,"other":10,"undecided":10},
+        "RENAN SANTOS": {"lula":24,"flavio":46,"other":24,"undecided":5}
+      },
+      "note": "Branco/nulo e indecisos foram publicados separadamente. Totais podem diferir de 100% por arredondamento."
+    },
+    {
+      "id": "datafolha-01833",
+      "institute": "Datafolha",
+      "registration": "BR-01833/2026",
+      "field": "15 a 17/09",
+      "sampleSize": 2002,
+      "sourceUrl": "https://www1.folha.uol.com.br/poder/2026/09/datafolha-flavio-bolsonaro-atrai-mais-eleitores-de-zema-renan-caiado-e-cury-em-2o-turno-contra-lula.shtml",
+      "groups": {
+        "ESCRITOR AUGUSTO CURY": {"lula":35,"flavio":41,"other":23,"undecided":null},
+        "RONALDO CAIADO": {"lula":30,"flavio":43,"other":null,"undecided":null},
+        "RENAN SANTOS": {"lula":22,"flavio":43,"other":34,"undecided":null},
+        "ZEMA": {"lula":25,"flavio":48,"other":27,"undecided":null},
+        "blankNullAbstention": {"lula":20,"flavio":17,"other":62,"undecided":null}
+      },
+      "note": "O Datafolha publicou recortes por Cury, Caiado, Renan, Zema e pelo grupo branco/nulo/nenhum do 1º turno."
+    }
+  ]
+}

@@ -19,3 +19,9 @@ Cada download pelo CLI cria/atualiza `data/raw/manifest.json` com URL, instante 
 ## Situação por seção em 26/10/2026
 
 O recurso oficial “Presidente — Votação por seção eleitoral — 2026” foi baixado e preservado com SHA-256 `2d42006d0f6c6e00bad83f5c23cd3d78cd3e3182dbc1ad6718222b6b132c23e1`. O CSV interno informa geração em 06/10/2026 e contém o 1º turno (eleição 6257) na amostra de esquema inspecionada. Como o arquivo comparável do 2º turno ainda não estava presente nesse recurso, o programa bloqueou a conclusão seccional. O adaptador `--granularity=section` está pronto para nova execução quando os dois turnos forem publicados com cobertura compatível.
+
+# Pesquisas de transferência entre turnos
+
+O arquivo `public/transfer-polls.json` registra somente cruzamentos de transferência efetivamente publicados. Cada entrada conserva instituto, registro no TSE, período de campo, amostra, URL consultada e os grupos divulgados. Foram incorporadas rodadas de Quaest (BR-08535/2026 e BR-08729/2026), Palver (BR-08028/2026), PoderData (BR-04258/2026) e Datafolha (BR-01833/2026).
+
+As categorias “branco/nulo/não vai” permanecem agrupadas quando a publicação original não as separa. Valores ausentes são gravados como `null`; não são completados por diferença. Pequenas somas de 99% ou 101% são preservadas como arredondamento publicado.
